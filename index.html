@@ -18,14 +18,14 @@
     </style>
 
     <script type="text/javascript">
-      let pass_me_the_good_stuff = "";
+      let myVar = "pass_me_the_good_stuff";
       // when a message is received from the page code
       window.onmessage = (event) => {
         if (event.data) {
           window.parent.postMessage(
-            event.data + pass_me_the_good_stuff,
-            "https://telemunity.com/MOVING_RATES_3"
-            // "https://yawikflame3.wixsite.com/gotmovers-horizontal"
+            event.data + " " + myVar,
+            // "https://telemunity.com/MOVING_RATES_3"
+            "https://yawikflame3.wixsite.com/gotmovers-horizontal"
           );
         }
       };
