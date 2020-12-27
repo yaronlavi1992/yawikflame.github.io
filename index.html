@@ -21,15 +21,17 @@
       // when a message is received from the page code
       window.onmessage = (event) => {
         if (event.data) {
-          window.parent.postMessage(
-            event.data + " received and back to wix!",
-            "https://yawikflame3.wixsite.com/server"
-          );
+          document.getElementById("theLabel").innerHTML = event.data;
         }
       };
 
       // send message to the page code
-      function button_click() {}
+      function button_click() {
+        window.parent.postMessage(
+          document.getElementById("theMessage").value,
+          "https://yawikflame3.wixsite.com/server"
+        );
+      }
     </script>
   </head>
 
