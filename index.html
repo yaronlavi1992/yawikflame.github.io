@@ -1,29 +1,45 @@
-<!DOCTYPE html>
 <html>
   <head>
+    <style>
+      .button {
+        background-color: #155de9;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        font-family: "Arial";
+      }
+      .label {
+        font-family: "Arial";
+      }
+      .input {
+        font-size: 14px;
+      }
+    </style>
+
     <script type="text/javascript">
-      function init() {
-        // when a message is received from the page code
-        window.onmessage = (event) => {
-          if (event.data) {
-            console.log("HTML Code Element received a message!");
-            insertMessage(event.data);
-          }
-        };
-      }
-      // display received message
-      function insertMessage(msg) {
-        document.getElementById("demo").innerHTML = msg;
-        sendReturnMessage("Message from the HTML Component!");
-      }
+      // when a message is received from the page code
+      window.onmessage = (event) => {
+        if (event.data) {
+          document.getElementById("theLabel").innerHTML = event.data;
+        }
+      };
+
       // send message to the page code
-      function sendReturnMessage(msg) {
-        window.parent.postMessage(msg, "http://mysite.com");
+      function button_click() {
+        window.parent.postMessage(
+          document.getElementById("theMessage").value,
+          "http://mysite.com"
+        );
       }
     </script>
   </head>
-  <body onload="init();" style="background-color: lightgray">
-    <h1>HTML Component Test</h1>
-    <p id="demo">Message will go here</p>
+
+  <body>
+    <span id="theLabel" class="label">HTML Label</span>
+    <br /><br />
+    <button class="button" onclick="button_click()">< Send Message</button>
+    <br /><br />
+    <input type="text" class="input" id="theMessage" />
   </body>
 </html>
