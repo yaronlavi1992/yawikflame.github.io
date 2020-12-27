@@ -18,11 +18,12 @@
     </style>
 
     <script type="text/javascript">
+      let pass_me_the_good_stuff = "";
       // when a message is received from the page code
       window.onmessage = (event) => {
         if (event.data) {
           window.parent.postMessage(
-            event.data + " received and back to wix!",
+            event.data + pass_me_the_good_stuff,
             "https://yawikflame3.wixsite.com/gotmovers-horizontal"
           );
         }
